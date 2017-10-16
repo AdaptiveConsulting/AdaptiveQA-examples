@@ -11,10 +11,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static selenium.DriverBase.getDriver;
+import static java.lang.System.*;
+import static selenium.DriverInit.getDriver;
 
 
-public class ScreenshotListener extends TestListenerAdapter {
+public class ScreenCaptureListener extends TestListenerAdapter {
 
     private boolean createFile(File screenshot) {
         boolean fileCreated = false;
@@ -45,7 +46,7 @@ public class ScreenshotListener extends TestListenerAdapter {
             screenshotStream.close();
         }
         catch (IOException unableToWriteScreenshot) {
-            System.err.println("Unable to write " + screenshot.getAbsolutePath());
+            err.println("Unable to write " + screenshot.getAbsolutePath());
             unableToWriteScreenshot.printStackTrace();
         }
         finally {
@@ -57,8 +58,8 @@ public class ScreenshotListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult failingTest) {
         try {
             WebDriver driver = getDriver();
-            String screenshotDirectory = System.getProperty("screenshotDirectory", "target/screenshots");
-            String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_" + failingTest.getName() + ".png";
+            String screenshotDirectory = getProperty("screenshotDirectory", "target/screenshots");
+            String screenshotAbsolutePath = screenshotDirectory + File.separator + currentTimeMillis() + "_" + failingTest.getName() + ".png";
             File screenshot = new File(screenshotAbsolutePath);
             if (createFile(screenshot)) {
                 try {
@@ -66,12 +67,12 @@ public class ScreenshotListener extends TestListenerAdapter {
                 } catch (ClassCastException weNeedToAugmentOurDriverObject) {
                     writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
                 }
-                System.out.println("Written screenshot to " + screenshotAbsolutePath);
+                out.println("Written screenshot to " + screenshotAbsolutePath);
             } else {
-                System.err.println("Unable to create " + screenshotAbsolutePath);
+                err.println("Unable to create " + screenshotAbsolutePath);
             }
         } catch (Exception ex) {
-            System.err.println("Unable to capture screenshot...");
+            err.println("Unable to capture screenshot...");
             ex.printStackTrace();
         }
     }

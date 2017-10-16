@@ -2,26 +2,26 @@ package selenium;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import selenium.config.DriverFactory;
-import selenium.listeners.ScreenshotListener;
+import selenium.config.DriverSelector;
+import selenium.listeners.ScreenCaptureListener;
 
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Listeners(ScreenshotListener.class)
-public class DriverBase {
+@Listeners(ScreenCaptureListener.class)
+public class DriverInit {
 
-    private static List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<DriverFactory>());
-    private static ThreadLocal<DriverFactory> driverFactory;
+    private static List<DriverSelector> webDriverThreadPool = Collections.synchronizedList(new ArrayList<DriverSelector>());
+    private static ThreadLocal<DriverSelector> driverFactory;
 
     @BeforeSuite(alwaysRun = true)
     public static void instantiateDriverObject() {
-        driverFactory = new ThreadLocal<DriverFactory>() {
+        driverFactory = new ThreadLocal<DriverSelector>() {
             @Override
-            protected DriverFactory initialValue() {
-                DriverFactory driverFactory = new DriverFactory();
+            protected DriverSelector initialValue() {
+                DriverSelector driverFactory = new DriverSelector();
                 webDriverThreadPool.add(driverFactory);
                 return driverFactory;
             }
@@ -45,7 +45,7 @@ public class DriverBase {
 
     @AfterSuite(alwaysRun = true)
     public static void closeDriverObjects() {
-        for (DriverFactory driverFactory : webDriverThreadPool) {
+        for (DriverSelector driverFactory : webDriverThreadPool) {
             driverFactory.quitDriver();
         }
     }

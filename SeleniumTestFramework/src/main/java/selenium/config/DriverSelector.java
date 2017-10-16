@@ -10,15 +10,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
-import static selenium.config.DriverType.CHROME;
-import static selenium.config.DriverType.valueOf;
+import static selenium.config.DriverEnum.CHROME;
+import static selenium.config.DriverEnum.valueOf;
 
-public class DriverFactory {
+public class DriverSelector {
 
     private WebDriver webdriver;
-    private DriverType selectedDriverType;
+    private DriverEnum selectedDriverType;
 
-    private final DriverType defaultDriverType = CHROME;
+    private final DriverEnum defaultDriverType = CHROME;
     private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
     private final String systemArchitecture = System.getProperty("os.arch");
@@ -52,7 +52,7 @@ public class DriverFactory {
     }
 
     private void determineEffectiveDriverType() {
-        DriverType driverType = defaultDriverType;
+        DriverEnum driverType = defaultDriverType;
         try {
             driverType = valueOf(browser);
         } catch (IllegalArgumentException ignored) {

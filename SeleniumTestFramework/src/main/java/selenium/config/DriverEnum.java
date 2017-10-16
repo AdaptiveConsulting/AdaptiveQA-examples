@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
-public enum DriverType implements DriverSetup {
+public enum DriverEnum implements IWebDriver {
 
     FIREFOX {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
@@ -36,7 +36,7 @@ public enum DriverType implements DriverSetup {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.chrome();
             capabilities.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
-            HashMap<String, String> chromePreferences = new HashMap<String, String>();
+            HashMap<String, String> chromePreferences = new HashMap<>();
             chromePreferences.put("profile.password_manager_enabled", "false");
             capabilities.setCapability("chrome.prefs", chromePreferences);
             return addProxySettings(capabilities, proxySettings);
@@ -93,7 +93,7 @@ public enum DriverType implements DriverSetup {
     PHANTOMJS {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
-            final List<String> cliArguments = new ArrayList<String>();
+            final List<String> cliArguments = new ArrayList<>();
             cliArguments.add("--web-security=false");
             cliArguments.add("--ssl-protocol=any");
             cliArguments.add("--ignore-ssl-errors=true");

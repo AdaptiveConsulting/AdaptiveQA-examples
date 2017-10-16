@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjectModel.pages.duckDuckGoHome.duckDuckGoHomePage;
-import selenium.DriverBase;
+import selenium.DriverInit;
 
-public class ExampleIT extends DriverBase {
+public class ExampleIT extends DriverInit {
 
     private final String defaultBaseUrl = "https://duckduckgo.com";
     private String baseUrl = System.getProperty("baseUrl", defaultBaseUrl);
