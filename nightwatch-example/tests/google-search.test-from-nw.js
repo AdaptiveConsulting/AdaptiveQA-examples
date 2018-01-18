@@ -1,3 +1,7 @@
+const cfgManager = require('node-config-manager');
+const { getConfig } = require('../config');
+cfgManager.addConfig('app');
+
 describe('Google demo test for Mocha', function() {
   describe('with Nightwatch', function() {
     before(function(client, done) {
@@ -20,14 +24,14 @@ describe('Google demo test for Mocha', function() {
 
     it('uses BDD to run the Google simple test', function(client) {
       client
-        .url('http://google.com')
+        .url(getConfig().host)
         .expect.element('body')
         .to.be.present.before(1000);
 
       client
         .setValue('input[type=text]', ['nightwatch', client.Keys.ENTER])
         .pause(1000)
-        .assert.title('nightwatch1 - Google Search')
+        .assert.title('nightwatch - Google Search')
         .assert.containsText('#main', 'Night Watch');
     });
   });
