@@ -1,0 +1,33 @@
+{
+  "name": "nightwatch-example",
+  "version": "1.0.0",
+  "description": "Nightwatch example",
+  "main": "index.js",
+  "scripts": {
+    "e2e-test": "nightwatch",
+    "e2e-test:chrome": "npm run e2e-test -- --env chrome",
+    "e2e-test:firefox": "npm run e2e-test -- --env firefox",
+    "debug": "node --inspect-brk node_modules/.bin/nightwatch --env chrome"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chromedriver": "^2.32.0",
+    "eslint": "^4.14.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "geckodriver": "^1.8.1",
+    "mocha": "^3.2.0",
+    "nightwatch": "^0.9.19",
+    "phantomjs-prebuilt": "^2.1.15",
+    "selenium-server": "^3.5.2"
+  },
+  "dependencies": {
+    "node-config-manager": "^1.2.0",
+    "rimraf": "^2.5.4"
+  }
+}
