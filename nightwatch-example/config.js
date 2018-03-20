@@ -1,6 +1,20 @@
-const configManager = require('node-config-manager');
-const appConfig = configManager.getConfig('app');
+const path = require('path');
+let configManager;
+let appConfig;
 
-module.exports.getConfig = function() {
+function getConfig() {
+  if (!configManager) {
+    configManager = require('node-config-manager');
+    configManager.init({
+      configDir: path.resolve('config')
+    });
+    configManager.addConfig('app');
+    appConfig = configManager.getConfig('app');
+  }
+
   return appConfig;
+}
+
+module.exports = {
+  getConfig
 };

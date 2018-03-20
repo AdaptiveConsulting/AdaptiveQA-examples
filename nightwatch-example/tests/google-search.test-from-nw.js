@@ -1,6 +1,4 @@
-const cfgManager = require('node-config-manager');
 const { getConfig } = require('../config');
-cfgManager.addConfig('app');
 
 describe('Google demo test for Mocha', function() {
   describe('with Nightwatch', function() {
