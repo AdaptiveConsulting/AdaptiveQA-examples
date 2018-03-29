@@ -30,5 +30,13 @@ module.exports = {
     browser.expect
       .element('.analytics__chart-title')
       .text.to.equal('Positions');
+  },
+  'Enter a new notional by clicking into the text box': function(browser) {
+    browser
+      .waitForElementPresent('.notional__size-input', 5000)
+      .clearValue('.notional__size-input')
+      .setValue('.notional__size-input', '10000')
+      .click('.spot-tile__price--bid')
+      .assert.visible('.trade-notification__summary-item--notional');
   }
 };
