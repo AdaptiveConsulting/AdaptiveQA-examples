@@ -1,0 +1,77 @@
+ [
+    {
+      "userId": "8bb6f036-17ba-45ba-8e0d-5fdcdafa9313",
+      "username": "paul.smith",
+      "userType": "Relationship Manager",
+      "firstName": "Paul",
+      "lastName": "Smith",
+      "userImage": "relationship_manager.png",
+      "roles": []
+    },
+    {
+      "userId": "8bb6f036-17ba-45ba-8e0d-5fdcdafa9314",
+      "username": "alexa.konrad",
+      "userType": "KYC Analyst",
+      "firstName": "Alexa",
+      "lastName": "Konrad",
+      "userImage": "kyc_analyst.png",
+      "roles": []
+    },
+    {
+      "userId": "6439d0bb-caad-4c30-b1ee-9b67f783bfc9",
+      "username": "peter.panterson",
+      "userType": "Corporate Treasurer",
+      "firstName": "Peter",
+      "lastName": "Panterson",
+      "userImage": "corporate_treasurer.png",
+      "email": "peter.panterson.ct@bankinthebox.co.uk",
+      "notifyPref": "Email",
+      "roles": [],
+      "profile": {
+        "title": "Mr",
+        "country": "UK",
+        "region": "Europe",
+        "marketSegment": "Large Corporates",
+        "subscribedProducts": [],
+        "caseDisplayIdForPOC": "02"
+      }
+    },
+    {
+      "userId": "8bb6f036-17ba-45ba-8e0d-5fdcdafa9317",
+      "username": "keith.summers",
+      "userType": "Corporate Treasurer",
+      "firstName": "Keith",
+      "lastName": "Summers",
+      "userImage": "corporate_treasurer.png",
+      "email": "keith.summers.ct@bankinthebox.co.uk",
+      "notifyPref": "Email",
+      "roles": [],
+      "profile": {
+        "title": "Mr",
+        "country": "UK",
+        "region": "Europe",
+        "marketSegment": "Large Corporates",
+        "subscribedProducts": [],
+        "caseDisplayIdForPOC": "01"
+      }
+    },
+    {
+      "userId": "8b7f6ed1-05df-4525-886d-567bad7f5fb6",
+      "username": "sonia.benezra",
+      "userType": "Corporate Treasurer",
+      "firstName": "Sonia",
+      "lastName": "Benezra",
+      "userImage": "corporate_treasurer.png",
+      "email": "sonia.benezra.ct@bankinthebox.co.uk",
+      "notifyPref": "Email",
+      "roles": [],
+      "profile": {
+        "title": "Mrs",
+        "country": "UK",
+        "region": "Europe",
+        "marketSegment": "Large Corporates",
+        "subscribedProducts": [],
+        "caseDisplayIdForPOC": "03"
+      }
+    }
+  ]
