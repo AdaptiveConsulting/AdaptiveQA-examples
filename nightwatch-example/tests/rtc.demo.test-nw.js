@@ -5,38 +5,38 @@ module.exports = {
   before: function(browser) {
     browser
       .url(getConfig().host)
-      .waitForElementPresent('body', 5000)
-      .pause(5000);
+      .waitForElementPresent('body', getConfig().timeout)
+      .pause(getConfig().timeout);
   },
   after: function(browser) {
     browser.end();
   },
 
   'Load RTC page and check the title : ': function(browser) {
-    browser.pause(5000).assert.title('Reactive Trader Cloud');
+    browser.pause(getConfig().timeout).assert.title('Reactive Trader Cloud');
   },
   'Check the number of tiles displayed is 9': function(browser) {
     browser
-      .waitForElementPresent('.workspace-region__item', 5000)
+      .waitForElementPresent('.workspace-region__item', getConfig().timeout)
       .elements('css selector', '.workspace-region__item', function(result) {
         browser.assert.equal(result.value.length, 9);
       });
   },
   'Check the Profit & Loss tile is displayed': function(browser) {
     browser
-      .waitForElementPresent('.analytics__header-title', 5000)
+      .waitForElementPresent('.analytics__header-title', getConfig().timeout)
       .expect.element('.analytics__header-title')
       .text.to.equal('Profit & Loss');
     browser.expect
       .element('.analytics__chart-title')
       .text.to.equal('Positions');
   },
+
   'Enter a new notional by clicking into the text box': function(browser) {
     browser
-      .waitForElementPresent('.notional__size-input', 5000)
-      .clearValue('.notional__size-input')
-      .setValue('.notional__size-input', '10000')
+      .waitForElementPresent('.notional__size-input', getConfig().timeout)
       .click('.spot-tile__price--bid')
+      .pause(getConfig().timeout)
       .assert.visible('.trade-notification__summary-item--notional');
   }
 };

@@ -1,3 +1,4 @@
 {
-  "host": "https://web-demo.adaptivecluster.com/"
+  "host": "https://web-demo.adaptivecluster.com/",
+  "timeout": 5000
 }
