@@ -1,5 +1,4 @@
 const seleniumServer = require('selenium-server');
-const phantomjs = require('phantomjs-prebuilt');
 const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
 
@@ -17,17 +16,24 @@ module.exports = {
     port: 4444
   },
 
-  test_runner: 'mocha',
   test_settings: {
     default: {
-      launch_url: 'http://localhost:8087',
+      skip_testcases_on_fail: false,
+      end_session_on_fail: false,
+      screenshots: {
+        enabled: true,
+        path: 'reports',
+        on_failure: true,
+        on_error: true,
+        silent: 'false'
+      },
+      launch_url: 'http://localhost',
       selenium_port: 4444,
       selenium_host: '127.0.0.1',
       desiredCapabilities: {
-        browserName: 'phantomjs',
+        browserName: 'chrome',
         javascriptEnabled: true,
-        acceptSslCerts: true,
-        'phantomjs.binary.path': phantomjs.path
+        acceptSslCerts: true
       }
     },
     chrome: {
@@ -45,8 +51,8 @@ module.exports = {
     firefox: {
       desiredCapabilities: {
         browserName: 'firefox',
-        javascriptEnabled: true,
-        marionette: true
+        javascriptEnabled: true
+        // marionette: true
       },
       selenium: {
         cli_args: {
