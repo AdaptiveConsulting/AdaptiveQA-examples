@@ -22,8 +22,6 @@
         <driver-binary-downloader-maven-plugin.version>1.0.14</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
-        <!-- Use the latest version whenever possible. -->
-        <jackson.version>2.9.9</jackson.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
         <read.timeout>30000</read.timeout>
@@ -118,13 +116,7 @@
             <artifactId>selenium-support</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
     </dependencies>
-
     <profiles>
         <profile>
             <id>selenium-tests</id>
